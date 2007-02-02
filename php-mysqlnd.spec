@@ -4,7 +4,7 @@ Summary:	MySQL native driver for PHP
 Name:		php-mysqlnd
 Version:	5.0.0
 Release:	0.%{_rc}.%{_rel}
-License:	PHP
+License:	PHP 3.01
 Group:		Development/Languages/PHP
 Source0:	%{name}-%{version}-%{_rc}-20070202.19.tar.bz2
 # Source0-md5:	e2e813e79f7496c78117eb451870bc82
