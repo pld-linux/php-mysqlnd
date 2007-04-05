@@ -1,16 +1,18 @@
-%define		_rc		alpha
+# TODO
+# php_mysqli.h:42:40: ext/mysqli/mysqli_libmysql.h: No such file or directory
+%define		_rc		beta
 %define		_rel	0.1
 Summary:	MySQL native driver for PHP
 Summary(pl.UTF-8):	Natywny sterownik MySQL dla PHP
 Name:		php-mysqlnd
-Version:	5.0.0
+Version:	5.0.1
 Release:	0.%{_rc}.%{_rel}
 License:	PHP 3.01
 Group:		Development/Languages/PHP
-Source0:	%{name}-%{version}-%{_rc}-20070202.19.tar.bz2
-# Source0-md5:	e2e813e79f7496c78117eb451870bc82
 URL:		http://dev.mysql.com/downloads/connector/php-mysqlnd/
-BuildRequires:	php-devel >= 4:6.0
+Source0:	ftp://mirror2.dataphone.se/pub/mysql/Downloads/Connector-PHP-mysqlnd/%{name}-%{version}-%{_rc}.tar.gz
+# Source0-md5:	a23dcb05ce0bc4df229ce08ff6d5a40b
+BuildRequires:	php-devel >= 4:5.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -28,13 +30,17 @@ używać ext/mysqli wraz z libmysql jak dotychczas, lub z mysqlnd.
 
 %prep
 %setup -q -n %{name}-%{version}-%{_rc}
+mv php5/ext/mysqli/{config9.m4,config.m4}
 
 %build
+cd php5/ext/mysqli
+phpize
 %configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+cd php5/ext/mysqli
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
