@@ -1,18 +1,18 @@
 # TODO
 # php_mysqli.h:42:40: ext/mysqli/mysqli_libmysql.h: No such file or directory
-%define		_rc		beta
-%define		_rel	0.1
+%define		subver	beta
+%define		rel		0.1
 Summary:	MySQL native driver for PHP
 Summary(pl.UTF-8):	Natywny sterownik MySQL dla PHP
 Name:		php-mysqlnd
 Version:	5.0.1
-Release:	0.%{_rc}.%{_rel}
+Release:	0.%{subver}.%{rel}
 License:	PHP 3.01
 Group:		Development/Languages/PHP
 URL:		http://dev.mysql.com/downloads/connector/php-mysqlnd/
-Source0:	ftp://mirror2.dataphone.se/pub/mysql/Downloads/Connector-PHP-mysqlnd/%{name}-%{version}-%{_rc}.tar.gz
+Source0:	ftp://mirror2.dataphone.se/pub/mysql/Downloads/Connector-PHP-mysqlnd/%{name}-%{version}-%{subver}.tar.gz
 # Source0-md5:	a23dcb05ce0bc4df229ce08ff6d5a40b
-BuildRequires:	php-devel >= 4:5.0
+BuildRequires:	php-devel >= 4:5.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,7 +29,7 @@ zamiennik libmysql - biblioteki klienckiej MySQL. Od teraz można
 używać ext/mysqli wraz z libmysql jak dotychczas, lub z mysqlnd.
 
 %prep
-%setup -q -n %{name}-%{version}-%{_rc}
+%setup -q -n %{name}-%{version}-%{subver}
 mv php5/ext/mysqli/{config9.m4,config.m4}
 
 %build
